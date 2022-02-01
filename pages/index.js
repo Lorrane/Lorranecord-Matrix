@@ -40,8 +40,18 @@ function Title(props) {
 
 export default function PaginaInicial() {
   // const username = 'Lorrane';
-  const [username, setUserName] = useState('Lorrane');
+  const [username, setUserName] = useState('');
   const roteamento = useRouter();
+
+  function handleImagem() {
+    if ( username  === '') {
+      return ('https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png')
+    } 
+    return (`https://github.com/${username}.png`);
+
+  }
+  const imagem = handleImagem();
+  
 
   return (
     <>
@@ -111,6 +121,7 @@ export default function PaginaInicial() {
 
             <TextField
               value={username}
+              placeholder='Digite seu usuário'
               onChange={function (event) {
                 const valor = event.target.value;
                 setUserName(valor);
@@ -161,7 +172,7 @@ export default function PaginaInicial() {
                 borderRadius: '50%',
                 marginBottom: '16px',
               }}
-              src={`https://github.com/${username}.png`}
+              src={imagem}
             />
             <Text
               variant="body4"
