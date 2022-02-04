@@ -44,14 +44,23 @@ export default function PaginaInicial() {
   const roteamento = useRouter();
 
   function handleImagem() {
-    if ( username  === '') {
+    if (username === '') {
       return ('https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png')
-    } 
+    }
     return (`https://github.com/${username}.png`);
 
   }
   const imagem = handleImagem();
-  
+
+  function verificaUsuario (){
+    // depois eu verifico se o user notfound ao inves de ''
+    return(
+      username === '' ? (
+        setUserName('lorrane')
+      ) : (username)
+    )
+  }
+
 
   return (
     <>
@@ -91,10 +100,10 @@ export default function PaginaInicial() {
           é o comportamento padrão. */}
           <Box
             as="form"
-            onSubmit={function (infosDoEvento) {
+            onSubmit={(infosDoEvento) => {
               infosDoEvento.preventDefault();
-              window.location.href = '/chat';
-              roteamento.push('/chat');
+              // window.location.href = '/chat';
+              roteamento.push(`/chat?username=${username}`);
             }}
             styleSheet={{
               display: 'flex',
@@ -139,6 +148,7 @@ export default function PaginaInicial() {
             <Button
               type='submit'
               label='Entrar'
+              onClick={verificaUsuario}
               fullWidth
               buttonColors={{
                 contrastColor: appConfig.theme.colors.neutrals["000"],

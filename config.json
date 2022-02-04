@@ -27,7 +27,17 @@
           "800": "#181F25",
           "900": "#101418",
           "999": "#080A0C"
-        }
+        },
+        "button":{
+          "buttonRed": "#800000",
+          "buttonRedTransparente": "rgba(128,0,0,0.5)",
+          "buttonBlack": "#1C1C1C", 
+          "buttonBlackTransparente": "rgba(0, 0, 0, 0.7)"
+      }, 
+      "background":{
+          "fundoBlack": "rgba(0, 0, 0, 0.7)",
+          "fundoRed": "rgba(128,0,0,0.5)"
+      }
       }
     },
     "stickers": [
@@ -62,6 +72,7 @@
       "https://www.alura.com.br/imersao-react-4/assets/figurinhas/Figurinha_29.png",
       "https://www.alura.com.br/imersao-react-4/assets/figurinhas/Figurinha_30.png",
       "http://2.bp.blogspot.com/-d21tffsTIQo/U_H9QjC69gI/AAAAAAAAKqM/wnvOyUr6a_I/s1600/Pikachu%2B2.gif",
+      "https://www.nerdstickers.com.br/wp-content/uploads/2020/11/adesivo-squirtle-douglas-feer-nerd-stickers.png",
       "https://media1.giphy.com/media/BdghqxNFV4efm/200.gif",
       "https://c.tenor.com/TKpmh4WFEsAAAAAC/alura-gaveta-filmes.gif",
       "https://i.pinimg.com/originals/0b/1c/23/0b1c2307c83e1ebdeed72e41b9a058ad.gif",
