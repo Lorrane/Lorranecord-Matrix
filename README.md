@@ -18,4 +18,4 @@
 - [x] passo 2 do desenvolvimento do projeto
 -->
 
-<img align=right alt="Developed by Lorrane" src="https://img.shields.io/badge/Developed%20 by-Lorrane-blue?logo=github&style=for-the-badge" />
+<img align=right alt="Developed by Lorrane" src="https://img.shields.io/badge/Developed%20 by-Lorrane-blue?logo=visual%20studio" />
