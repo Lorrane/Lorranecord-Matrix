@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import appConfig from '../config.json';
 import { createClient } from '@supabase/supabase-js'
 import { useRouter } from 'next/router';
+import { RiDeleteBinLine } from 'react-icons/ri';
 import { ButtonSendSticker } from '../src/components/ButtonSendSticker';
 
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzkxMjU4NCwiZXhwIjoxOTU5NDg4NTg0fQ.Z51tYQEnJYE2wJdmpS5ndqye98FP7hOJomDjkxq9NFg';
@@ -25,7 +26,7 @@ export default function ChatPage() {
     const [mensagem, setMensagem] = useState('');
     const [listaMensagens, setListaMensagens] = React.useState([]);
 
-    useEffect(async() => {
+    useEffect(async () => {
         supabaseClient
             .from('mensagem')
             .select('*')
@@ -34,7 +35,7 @@ export default function ChatPage() {
                 setListaMensagens(data);
             });
 
-        escutaMensagensEmTempoReal((novaMensagem) =>{
+        escutaMensagensEmTempoReal((novaMensagem) => {
             setListaMensagens((valorAtualDaLista) => {
                 return [
                     novaMensagem,
@@ -139,10 +140,32 @@ export default function ChatPage() {
                                 borderRadius: '5px',
                                 padding: '6px 8px',
                                 backgroundColor: appConfig.theme.colors.neutrals[800],
-                                marginRight: '12px',
                                 color: appConfig.theme.colors.neutrals[200],
                             }}
                         />
+                        <Button
+                            onClick={(event) => {
+                                event.preventDefault;
+                                handleNovaMensagem(mensagem);
+                            }}
+                            styleSheet={{
+                                minWidth: '52px',
+                                minHeight: '42px',
+                                fontSize: '20px',
+                                lineHeight: '0',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                marginLeft: '5px',
+                                marginBottom: '7px',
+                                border: '1px solid black',
+                                backgroundColor: '#29333d',
+                                hover: {
+                                    backgroundColor: appConfig.theme.colors.neutrals["700"],
+                                },
+                            }}
+                            label="Enter"
+                        >Enviar</Button>
                         <ButtonSendSticker
                             onStickerClick={(sticker) => {
                                 handleNovaMensagem(`:sticker: ${sticker}`)
@@ -153,112 +176,144 @@ export default function ChatPage() {
             </Box>
         </Box>
     )
-}
+    function Header() {
+        return (
+            <>
+                <Box styleSheet={{ width: '100%', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} >
+                    <Text variant='heading5'>
+                        Chat
+                    </Text>
+                    <Button
+                        variant='tertiary'
+                        colorVariant='neutral'
+                        label='Logout'
+                        href="/"
+                    />
+                </Box>
+            </>
+        )
+    }
 
-function Header() {
-    return (
-        <>
-            <Box styleSheet={{ width: '100%', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} >
-                <Text variant='heading5'>
-                    Chat
-                </Text>
-                <Button
-                    variant='tertiary'
-                    colorVariant='neutral'
-                    label='Logout'
-                    href="/"
-                />
-            </Box>
-        </>
-    )
-}
+    function MessageList(props) {
+        const usuarioLogado = roteamento.query.username;
+        return (
+            <Box
+                tag="ul"
+                styleSheet={{
+                    overflow: 'scroll',
+                    overflowX: 'hidden',
+                    display: 'flex',
+                    flexDirection: 'column-reverse',
+                    flex: 1,
+                    color: appConfig.theme.colors.neutrals["000"],
+                    marginBottom: '16px',
 
-function MessageList(props) {
-    return (
-        <Box
-            tag="ul"
-            styleSheet={{
-                overflow: 'scroll',
-                overflowX: 'hidden',
-                display: 'flex',
-                flexDirection: 'column-reverse',
+                }}
+            >
 
-                flex: 1,
-                color: appConfig.theme.colors.neutrals["000"],
-                marginBottom: '16px',
+                {props.listaMensagens.map((mensagem) => {
+                    return (
 
-            }}
-        >
-
-            {props.listaMensagens.map((mensagem) => {
-                return (
-
-                    <Text
-                        key={mensagem.id}
-                        tag="li"
-                        styleSheet={{
-                            borderRadius: '5px',
-                            padding: '6px',
-                            marginBottom: '12px',
-                            hover: {
-                                backgroundColor: appConfig.theme.colors.neutrals[700],
-                            }
-                        }}
-                    >
-                        <Box
+                        <Text
+                            key={mensagem.id}
+                            tag="li"
                             styleSheet={{
-                                marginBottom: '8px',
-                                display: 'flex',
+                                borderRadius: '5px',
+                                padding: '6px',
+                                marginBottom: '12px',
+                                marginRight: '12px',
+                                hover: {
+                                    backgroundColor: appConfig.theme.colors.neutrals[700],
+                                }
                             }}
                         >
-                            <Image
+                            <Box
                                 styleSheet={{
-                                    width: '20px',
-                                    height: '20px',
-                                    borderRadius: '50%',
-                                    display: 'inline-block',
-                                    marginRight: '8px',
+                                    marginBottom: '8px',
+                                    display: 'flex',
+                                    width: '99%',
                                 }}
-                                src={`https://github.com/${mensagem.de}.png`}
-                            />
-                            <Text tag="strong">
-                                {mensagem.de}
-                            </Text>
-                            <Text
-                                styleSheet={{
-                                    fontSize: '10px',
-                                    marginLeft: '8px',
-                                    marginTop: '5px',
-                                    color: appConfig.theme.colors.neutrals[300],
-                                }}
-                                tag="span"
                             >
-                                {(new Date().toLocaleDateString())}
-                            </Text>
-                        </Box>
-                        {/* operador ternário, se começacom (':sticker:') faz algo, 
-                        se não faz outro algo */}
-                        {
-                            mensagem.texto.startsWith(':sticker:')
+                                <Image
+                                    styleSheet={{
+                                        width: '20px',
+                                        height: '20px',
+                                        borderRadius: '50%',
+                                        display: 'inline-block',
+                                        marginRight: '8px',
+                                    }}
+                                    src={`https://github.com/${mensagem.de}.png`}
+                                />
+                                <Text tag="strong">
+                                    {mensagem.de}
+                                </Text>
+                                <Text
+                                    styleSheet={{
+                                        fontSize: '10px',
+                                        marginLeft: '8px',
+                                        marginTop: '5px',
+                                        color: appConfig.theme.colors.neutrals[300],
+                                    }}
+                                    tag="span"
+                                >
+                                    {(new Date().toLocaleDateString())}
+                                </Text>
+                                {
+                                    usuarioLogado === mensagem.de ?
+                                        <Box
+                                            title={`Apagar mensagem`}
+                                            styleSheet={{
+                                                marginLeft: '86.1%',
+                                                padding: '2px 15px',
+                                                cursor: 'pointer'
+                                            }}
+                                            onClick={() => {
+                                                let response = confirm('Deseja apagar a mensagem?');
+                                                if (response === true) {
+                                                    supabaseClient
+                                                        .from('mensagem')
+                                                        .delete()
+                                                        .match({ id: mensagem.id })
+                                                        .then(() => {
+                                                            let indice = listaMensagens.indexOf(mensagem);
+                                                            listaMensagens.splice(indice, 1)
+                                                            setListaMensagens([...listaMensagens])
+                                                        })
+                                                }
+                                            }}
+                                        >
+                                            {<RiDeleteBinLine />}
+                                        </Box>
+                                        :
+                                        null
+
+                                }
+                            </Box>
+
+
+                            {/* operador ternário, se começacom (':sticker:') faz algo, 
+                            se não faz outro algo */}
+                            {mensagem.texto.startsWith(':sticker:')
                                 ? (
                                     <Image
                                         src={mensagem.texto.replace(':sticker:', '')}
                                         styleSheet={{
                                             maxWidth: '65%',
                                             maxHeight: '65%',
-
                                         }}
                                     />
                                 ) : (
                                     mensagem.texto
                                 )
-                        }
+                            }
 
-                        {/* {mensagem.texto} */}
-                    </Text>
-                );
-            })}
 
-        </Box>
-    )
+
+                        </Text>
+                    );
+                })}
+
+            </Box>
+        )
+    }
 }
