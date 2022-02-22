@@ -16,7 +16,7 @@ function Title(props) {
         {`
             // usando o estilo como base para qualquer Tag que vier
             ${Tag}{
-                color: ${appConfig.theme.colors.neutrals['900']};
+                color: ${appConfig.theme.colors.primary['600']};
                 font-size: 24px;
                 font-weight: 600;
             }
@@ -91,7 +91,10 @@ export default function PaginaInicial() {
             padding: '32px',
             margin: '16px',
             boxShadow: '0 2px 10px 0 rgb(0 0 0 / 20%)',
-            backgroundColor: appConfig.theme.colors.neutrals[700],
+            backgroundColor: '#ffffff10',
+              backdropFilter: 'blur(12px)',
+              webkitBackdropFilter: 'blur(12px)',
+            // backgroundColor: appConfig.theme.colors.neutrals[700],
           }}
         >
           {/* Formulário */}
@@ -118,7 +121,7 @@ export default function PaginaInicial() {
               marginBottom: '32px',
             }}
           >
-            <Title tag="h2">Boas vindas de volta!</Title>
+            <Title>Boas vindas de volta!</Title>
             <Text
               variant="body3"
               styleSheet={{
