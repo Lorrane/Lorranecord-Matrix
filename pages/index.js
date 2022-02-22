@@ -52,9 +52,9 @@ export default function PaginaInicial() {
   }
   const imagem = handleImagem();
 
-  function verificaUsuario (){
+  function verificaUsuario() {
     // depois eu verifico se o user notfound ao inves de ''
-    return(
+    return (
       username === '' ? (
         setUserName('lorrane')
       ) : (username)
@@ -92,8 +92,8 @@ export default function PaginaInicial() {
             margin: '16px',
             boxShadow: '0 2px 10px 0 rgb(0 0 0 / 20%)',
             backgroundColor: '#ffffff10',
-              backdropFilter: 'blur(12px)',
-              webkitBackdropFilter: 'blur(12px)',
+            backdropFilter: 'blur(12px)',
+            webkitBackdropFilter: 'blur(12px)',
             // backgroundColor: appConfig.theme.colors.neutrals[700],
           }}
         >

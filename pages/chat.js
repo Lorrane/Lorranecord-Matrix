@@ -82,7 +82,10 @@ export default function ChatPage() {
                     flex: 1,
                     boxShadow: '0 2px 10px 0 rgb(0 0 0 / 20%)',
                     borderRadius: '5px',
-                    backgroundColor: appConfig.theme.colors.neutrals[700],
+                    backgroundColor: '#ffffff10',
+                    backdropFilter: 'blur(12px)',
+                    webkitBackdropFilter: 'blur(12px)',
+                    // backgroundColor: appConfig.theme.colors.neutrals[700],
                     height: '100%',
                     maxWidth: '95%',
                     maxHeight: '95vh',
@@ -185,9 +188,10 @@ export default function ChatPage() {
                     </Text>
                     <Button
                         variant='tertiary'
-                        colorVariant='neutral'
+                        colorVariant='light'
                         label='Logout'
                         href="/"
+                        styleSheet={{ backgroundColor: '#29333d', }}
                     />
                 </Box>
             </>
