@@ -13,12 +13,16 @@
   
 </p>
 
-<!-- Descrição do projeto em inglês -->
+This project was developed during the alura week, when they talk about new technologys presents a project using it. This one is a Discord clone, 
+using a Supabase technology to host the database, The login page look for a Github Profile picture while is typing a username in the textbox, in case
+you do not have a Github profile, just click the "Entrar" button to loggin using my profile.
 
-<!--
+
 ## Script
-- [x] passo 1 da criação do projeto
-- [x] passo 2 do desenvolvimento do projeto
--->
+
+- [x] First step on the project
+
+## Modelo 
+IF you like this discription and want to know how the project is now, just click <a href="https://lorranecord-matrix.vercel.app">here</a>.
 
 <img align=right alt="Developed by Lorrane" src="https://img.shields.io/badge/Developed%20 by-Lorrane-blue?logo=visual%20studio" />
