@@ -23,6 +23,6 @@ you do not have a Github profile, just click the "Entrar" button to logg in usin
 - [x] First step on the project
 
 ## Modelo 
-IF you like this discription and want to know how the project is now, please send me a message and I'll unpause the database, when the database become unpaused, just click <a href="https://lorranecord-matrix.vercel.app">here</a> to access the app.
+IF you want to know how the project is now, please send me a message and I'll unpause the database, if the database is already unpaused, just click <a href="https://lorranecord-matrix.vercel.app">here</a> to access the app.
 
-<img align=right alt="Developed by Lorrane" src="https://img.shields.io/badge/Developed%20 by-Lorrane-blue?logo=visual%20studio" />
+<img align=right alt="Developed by Lorrane" src="https://img.shields.io/badge/Developed%20by-Lorrane-blue?logo=visual%20studio" />
